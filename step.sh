@@ -41,5 +41,5 @@ cd gojira-darwin-amd64
 
 # execute jira tasks
 ./gojira update --jql "${jql}" --payload "{\"update\":{\"labels\":[{\"add\":\"${labelTag}\"}]}}"
-./gojira transition --jql "${jql}" --action 241
 ./gojira assignee --jql "${jql}" --reporter
+./gojira transition --jql "${jql}" --action 241
