@@ -23,6 +23,11 @@ envman add --key EXAMPLE_STEP_OUTPUT --value 'the value you want to share'
 
 GOJIRA_VERSION="0.2.1"
 
+# Fetch from bitrise secrets
+export GOJIRA_BASEURL=${jira_baseurl}
+export GOJIRA_USERNAME=${jira_username}
+export GOJIRA_PASSWORD=${jira_password}
+
 # setup fields
 marketingVersion=`xcodebuild -showBuildSettings | grep MARKETING_VERSION | tr -d 'MARKETING_VERSION ='`
 buildNumber=`git rev-list --count HEAD`

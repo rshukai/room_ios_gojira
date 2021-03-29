@@ -8,7 +8,7 @@ app:
   # If you want to share this step into a StepLib
   - BITRISE_STEP_ID: gojira
   - BITRISE_STEP_VERSION: "0.0.1"
-  - BITRISE_STEP_GIT_CLONE_URL: https://github.com/junkpiano/bitrise-step-gojira.git
+  - BITRISE_STEP_GIT_CLONE_URL: https://https://github.com/joshuafrancisrak/fashion_ios_gojira.git
   - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
 
 workflows:
