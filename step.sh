@@ -32,7 +32,9 @@ export GOJIRA_PASSWORD=${jira_password}
 marketingVersion=`xcodebuild -showBuildSettings | grep MARKETING_VERSION | tr -d 'MARKETING_VERSION ='`
 buildNumber=`git rev-list --count HEAD`
 labelTag="v${marketingVersion}(${buildNumber})"
-jql="project=RFMI and status=Merged and fixVersion=${marketingVersion}"
+marketingShort=`echo $marketingVersion | awk -F'.' '{print $1 "." $2}'`
+
+jql="project=RFMI and status=Merged and (fixVersion=${marketingVersion} or (fixVersion=null and Sprint=iOS Version ${marketingShort}))"
 
 # download gojira
 curl -LO https://github.com/junkpiano/gojira/releases/download/${GOJIRA_VERSION}/gojira-darwin-amd64.zip
