@@ -27,14 +27,10 @@ GOJIRA_VERSION="0.2.1"
 export GOJIRA_BASEURL=${jira_baseurl}
 export GOJIRA_USERNAME=${jira_username}
 export GOJIRA_PASSWORD=${jira_password}
+export GOJIRA_TICKET_ID=${jira_ticket_id}
+export GOJIRA_TARGET_ASSIGNEE=${jira_target_assignee}
 
-# setup fields
-marketingVersion=`xcodebuild -showBuildSettings | grep MARKETING_VERSION | tr -d 'MARKETING_VERSION ='`
-buildNumber=`git rev-list --count HEAD`
-labelTag="v${marketingVersion}(${buildNumber})"
-marketingShort=`echo $marketingVersion | awk -F'.' '{print $1 "." $2}'`
-
-jql="project=RFMI and status=Merged and (fixVersion=${marketingVersion} or (fixVersion=null and Sprint=\"iOS Version ${marketingShort}\"))"
+jql="project=RIAD and status=Merged and type not in (Task, Sub-task) and labels not in (ROOM-NO-QA) and id in ${GOJIRA_TICKET_ID}"
 
 # download gojira
 curl -LO https://github.com/junkpiano/gojira/releases/download/${GOJIRA_VERSION}/gojira-darwin-amd64.zip
@@ -42,6 +38,5 @@ unzip gojira-darwin-amd64.zip
 cd gojira-darwin-amd64
 
 # execute jira tasks
-./gojira update --jql "${jql}" --payload "{\"update\":{\"labels\":[{\"add\":\"${labelTag}\"}]}}"
-./gojira assignee --jql "${jql}" --reporter
+./gojira assignee --jql "${jql}" -- user ${jira_target_assignee}
 ./gojira transition --jql "${jql}" --action 241

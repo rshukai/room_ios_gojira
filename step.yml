@@ -88,3 +88,11 @@ inputs:
     opts:
       title: "Transition ID"
       summary: Transition ID where the issues are transitioned
+  - jira_ticket_id:
+    opts:
+      title: "Ticket ID"
+      summary: Ticket ID to be changed
+  - jira_target_assignee: 
+    opts: 
+      title: "Target Assignee"
+      summary: Target assignee to be changed
