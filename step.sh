@@ -30,7 +30,7 @@ export GOJIRA_PASSWORD=${jira_password}
 export GOJIRA_TICKET_ID=${jira_ticket_id}
 export GOJIRA_TARGET_ASSIGNEE=${jira_target_assignee}
 
-jql="project=RIAD and status=Merged and type not in (Task, Sub-task) and labels not in (ROOM-NO-QA) and id in ${GOJIRA_TICKET_ID}"
+jql="project=RIAD and status=Merged and type not in (Task, Sub-task) and labels not in (ROOM-NO-QA) and id in (${GOJIRA_TICKET_ID})"
 
 # download gojira
 curl -LO https://github.com/junkpiano/gojira/releases/download/${GOJIRA_VERSION}/gojira-darwin-amd64.zip
