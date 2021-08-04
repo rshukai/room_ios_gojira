@@ -38,5 +38,5 @@ unzip gojira-darwin-amd64.zip
 cd gojira-darwin-amd64
 
 # execute jira tasks
-./gojira assignee --jql "${jql}" -- user ${jira_target_assignee}
+./gojira assignee --jql "${jql}" --user ${GOJIRA_TARGET_ASSIGNEE}
 ./gojira transition --jql "${jql}" --action 241
